@@ -1,0 +1,56 @@
+Extracted from http://bioinfo.vanderbilt.edu/NRSA/ (Nascent RNA sequencing analysis provides insights into enhancer-mediated gene regulation)
+
+Software: NRSA.zip
+
+1. Requirements: Perl, R, HOMER and bedtools
+
+Install Perl, R, HOMER and bedtools (v2.22.1), and add /bin directory to your executable path.
+
+Perl: https://www.perl.org/
+R: http://www.r-project.org/
+HOMER: http://homer.salk.edu/homer/introduction/install.html
+bedtools: https://github.com/arq5x/bedtools2/releases/tag/v2.22.1 following the instructions.
+
+2. Install NRSA
+
+unzip NRSA.zip       #Unzip the file
+cd NRSA/                  #Change directories into the folder
+chmod 755 bin/*.pl        #Change the mode of executable files
+chmod 755 bin/*.modules   #Change the mode of executable files
+
+#Add NRSA scripts to Shell searching path ($PATH). This step is optional.
+#If your NRSA is installed at /home/usrname/NRSA
+export PATH=/home/usrname/NRSA/bin/:$PATH
+
+3. Install required perl packages
+
+#Check whether all the packages needed are installed by running test.modules,
+./bin/test.modules
+
+#the output of test.modules looks like,
+ ok   Cwd 
+ ok   File::Basename
+ ok   File::Path
+ ok   Getopt::Long
+ fail Statistics::Basic 
+ fail Statistics::R
+ 
+#If “fail” shows up before the package name, that means users don’t have this required package. In this case, Statistics::Basic and Statistics::R need to be installed. 
+Users can install missing packages by running "./bin/install.modules packagename".
+#e.g  
+./bin/install.modules Statistics::Basic
+  
+#Add the NRSA lib to your PERL5LIB environment variable,
+#If your NRSA is installed at /home/usrname/NRSA
+export PERL5LIB=$PERL5LIB:/home/usrname/NRSA/lib/
+4. Install required R packages
+
+gplots and DESeq2 (v1.2.10)
+
+#In your R shell, type the following commands:
+#gplots
+install.packages("gplots")
+
+#DESeq2         		
+source("http://bioconductor.org/biocLite.R")
+biocLite("DESeq2")
