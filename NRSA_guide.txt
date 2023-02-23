@@ -2,6 +2,8 @@ Extracted from http://bioinfo.vanderbilt.edu/NRSA/ (Nascent RNA sequencing analy
 
 Software: NRSA.zip
 
+Download the NRSA.zip file from https://zenodo.org/record/7671195
+
 1. Requirements: Perl, R, HOMER and bedtools
 
 Install Perl, R, HOMER and bedtools (v2.22.1), and add /bin directory to your executable path.
